@@ -1,0 +1,6 @@
+C:\Training\DevXtreme\Mailbox\Mailbox\bin\Mailbox.dll.config
+C:\Training\DevXtreme\Mailbox\Mailbox\bin\Mailbox.dll
+C:\Training\DevXtreme\Mailbox\Mailbox\bin\Mailbox.pdb
+C:\Training\DevXtreme\Mailbox\Mailbox\obj\Debug\Mailbox.dll
+C:\Training\DevXtreme\Mailbox\Mailbox\obj\Debug\Mailbox.pdb
+C:\Training\DevXtreme\Mailbox\Mailbox\obj\Debug\Mailbox.csprojResolveAssemblyReference.cache
