@@ -1,11 +1,12 @@
-define(["require", "exports", 'knockout'], function (require, exports, ko) {
+define(["require", "exports"], function (require, exports) {
     "use strict";
     var MailsViewModel = (function () {
-        function MailsViewModel(mailfolderData) {
-            this.folder = ko.observable(mailfolderData.folder);
-            this.mails = ko.observableArray(mailfolderData.mails);
+        function MailsViewModel(folder, mails) {
+            this.folder = folder;
+            this.mails = mails;
         }
         return MailsViewModel;
     }());
     return MailsViewModel;
 });
+//# sourceMappingURL=MailsViewModel.js.map

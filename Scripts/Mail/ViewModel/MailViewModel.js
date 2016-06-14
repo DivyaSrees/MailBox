@@ -12,3 +12,4 @@ define(["require", "exports", 'knockout'], function (require, exports, ko) {
     }());
     return MailViewModel;
 });
+//# sourceMappingURL=MailViewModel.js.map

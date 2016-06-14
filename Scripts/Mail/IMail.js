@@ -4,12 +4,12 @@ define(["require", "exports"], function (require, exports) {
     (function (IMail) {
         (function (MailFolder) {
             MailFolder[MailFolder["Inbox"] = 0] = "Inbox";
-            MailFolder[MailFolder["Sent"] = 1] = "Sent";
-            MailFolder[MailFolder["Deleted"] = 2] = "Deleted";
-            MailFolder[MailFolder["Draft"] = 3] = "Draft";
-            MailFolder[MailFolder["Junk"] = 4] = "Junk";
+            MailFolder[MailFolder["Archive"] = 1] = "Archive";
+            MailFolder[MailFolder["Sent"] = 2] = "Sent";
+            MailFolder[MailFolder["Spam"] = 3] = "Spam";
         })(IMail.MailFolder || (IMail.MailFolder = {}));
         var MailFolder = IMail.MailFolder;
     })(IMail || (IMail = {}));
     return IMail;
 });
+//# sourceMappingURL=IMail.js.map

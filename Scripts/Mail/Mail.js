@@ -29,3 +29,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     exports.MailData = MailData;
 });
+//# sourceMappingURL=Mail.js.map

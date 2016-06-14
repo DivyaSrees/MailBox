@@ -1,26 +1,19 @@
-define(["require", "exports", 'knockout', 'sammy', 'Common/EnumExtension'], function (require, exports, ko, sammy, EnumExtension) {
+define(["require", "exports", 'knockout', 'Mail/IMail', 'Common/EnumExtension'], function (require, exports, ko, IMail, EnumExtension) {
     "use strict";
     var WebmailViewModel = (function () {
-        function WebmailViewModel(chosenFolder, chosenFolderData, chosenMailData) {
-            var _this = this;
-            this.folders = EnumExtension.getNames(MailApp.MailFolder);
-            this.SammyApp = sammy().get('#.folder', function (context) {
-                _this.chosenFolder(context.params.folder);
-                _this.chosenMailData(null);
-                $.get("/mail", { folder: context.params.folder }, _this.chosenFolderData);
-            }).get('#.folder/:mailId', function (context) {
-                _this.chosenFolder(context.params.folder);
-                _this.chosenFolderData(null);
-                $.get("/mail", { mailId: context.params.mailId }, _this.chosenMailData);
-            }).get('', function (context) {
-                context.app.Route('get', 'Inbox');
-            }).run();
-            this.chosenFolder = ko.observable(chosenFolder);
-            this.chosenFolderData = ko.observable(chosenFolderData);
-            this.chosenMailData = ko.observable(chosenMailData);
+        function WebmailViewModel() {
+            this.folders = EnumExtension.getNames(IMail.MailFolder);
+            this.chosenFolder = ko.observable(this.folders[IMail.MailFolder.Inbox]);
+            this.chosenFolderData = ko.observable();
+            this.chosenMailData = ko.observable();
+            this.goToFolder(this.chosenFolder());
         }
         WebmailViewModel.prototype.goToFolder = function (folder) {
-            location.hash = folder.toString();
+            var _this = this;
+            console.log(folder);
+            this.chosenFolder(folder);
+            $.get('mail.json', function (data) { return _this.chosenFolderData(data[folder]); });
+            //location.hash = folder.toString();
         };
         WebmailViewModel.prototype.goToMail = function (mail) {
             location.hash = mail.folder + "/" + mail.id;

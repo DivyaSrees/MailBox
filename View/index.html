@@ -1,15 +1,15 @@
 ﻿
 <head>
-
-        <script data-main="../Scripts/requireConfig" type="text/javascript" src="../Scripts/require.js"></script>
-
+    <script data-main="../Scripts/requireConfig" type="text/javascript" src="../Scripts/require.js"></script>
+    <link rel="stylesheet"  type="text/css" href="../Content/Mail.css" />
+    <link rel="stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
 
 </head>
 <body>
     <!-- Folders -->
-    <ul class="folders" data-bind="foreach: folders">
-        <li data-bind="text: $data,
-                   css: { selected: $data == $root.chosenFolderId() },
+    <ul class="folders row" data-bind="foreach: folders">
+        <li class="col-md-3" data-bind="text: $data,
+                  css: { selected: $data == $root.chosenFolder()},
                    click: $root.goToFolder"></li>
     </ul>
 

@@ -7,46 +7,54 @@ import IMail = require('Mail/IMail');
 import EnumExtension = require('Common/EnumExtension');
 
     class WebmailViewModel {
-        public chosenFolder: KnockoutObservable<IMail.MailFolder>;
+        public chosenFolder: KnockoutObservable<string>;
         public chosenFolderData: KnockoutObservable<MailsVM>;
         public chosenMailData: KnockoutObservable<MailVM>;
+        public folders: string[];
+        constructor(){
+            this.folders = EnumExtension.getNames(IMail.MailFolder);
+           
+            this.chosenFolder = ko.observable(this.folders[IMail.MailFolder.Inbox]);
+            this.chosenFolderData = ko.observable<MailsVM>();
+            this.chosenMailData = ko.observable<MailVM>();
+            this.goToFolder(this.chosenFolder());
 
-        public folders: string[] = EnumExtension.getNames(IMail.MailFolder);
+}
+       
 
-        constructor(chosenFolder?: IMail.MailFolder,
-            chosenFolderData?: MailsVM,
-            chosenMailData?: MailVM) {
-            this.chosenFolder = ko.observable(chosenFolder);
-            this.chosenFolderData = ko.observable(chosenFolderData);
-            this.chosenMailData = ko.observable(chosenMailData);
+        
+        public goToFolder(folder: string) {
+           
+            this.chosenFolder(folder);
+            $.get('mail.json', (data) => this.chosenFolderData(data[folder]);
+                    console.log(data[folder]));
+            );
+        
+            //location.hash = folder.toString();
         }
 
-        goToFolder(folder: IMail.MailFolder) {
-            location.hash = folder.toString();
-        }
-
-        goToMail(mail: IMail.IMailData) {
+        public goToMail(mail: IMail.IMailData) {
             location.hash = mail.folder + "/" + mail.id;
         }
 
 
-        public SammyApp: sammy.Application =
+    /*    public SammyApp: sammy.Application = 
         sammy().get('#.folder', context => {
             this.chosenFolder(context.params.folder);
             this.chosenMailData(null);
-            $.get("/mail", { folder: context.params.folder },
+            $.get("http://learn.knockoutjs.com/mail", { folder: context.params.folder },
                 this.chosenFolderData);
 
         }).get('#.folder/:mailId', context => {
             this.chosenFolder(context.params.folder);
             this.chosenFolderData(null);
-            $.get("/mail", { mailId: context.params.mailId },
+            $.get("http://learn.knockoutjs.com/mail", { mailId: context.params.mailId },
                 this.chosenMailData);
 
-        }).get('', context => {
+        }).get('http://learn.knockoutjs.com/mail', context => {
             context.app.Route('get', 'Inbox');
         }).run();
-
+        */
 
     }
 export = WebmailViewModel;

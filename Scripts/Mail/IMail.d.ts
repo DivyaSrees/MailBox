@@ -1,10 +1,10 @@
-declare module MailApp {
+export = IMail;
+declare module IMail {
     enum MailFolder {
         Inbox = 0,
-        Sent = 1,
-        Deleted = 2,
-        Draft = 3,
-        Junk = 4,
+        Archive = 1,
+        Sent = 2,
+        Spam = 3,
     }
     interface IMailData {
         id: string;

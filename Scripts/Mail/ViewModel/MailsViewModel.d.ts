@@ -1,6 +1,7 @@
+import IMail = require('Mail/IMail');
 declare class MailsViewModel {
-    folder: KnockoutObservable<MailApp.MailFolder>;
-    mails: KnockoutObservableArray<MailApp.IMailData>;
-    constructor(mailfolderData: MailApp.IMailFolderData);
+    folder: IMail.MailFolder;
+    mails: IMail.IMailData[];
+    constructor(folder: IMail.MailFolder, mails: IMail.IMailData[]);
 }
 export = MailsViewModel;

@@ -1,0 +1,11 @@
+﻿
+.folders{ background-color:aqua;}
+ul.folders li{
+   display:inline
+    
+}
+
+.selected{
+ background-color:red;
+    
+}

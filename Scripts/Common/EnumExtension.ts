@@ -15,8 +15,5 @@
         return Object.keys(e).map(k => e[k]);
     }
 
-    static Add(a: number, b: number) {
-        return a + b;
-    }
 }
 export = EnumExtension;

@@ -11,3 +11,4 @@ define(["require", "exports"], function (require, exports) {
     }());
     return MailFolderData;
 });
+//# sourceMappingURL=Mails.js.map

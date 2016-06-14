@@ -5,10 +5,9 @@ module IMail {
     export enum MailFolder {
 
         Inbox,
+        Archive,
         Sent,
-        Deleted,
-        Draft,
-        Junk
+        Spam
 
     }
 
